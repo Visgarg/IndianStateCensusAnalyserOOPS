@@ -6,7 +6,7 @@ namespace IndianStateCensusAnalyserTest
 {
     public class Tests
     {
-        static string wrongIndiaStateCensusData = @"C:\Users\vishu\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\CSVfiles\WrongIndiaStateCensusData.csv";
+        static string wrongIndiaStateCensusData = @"C:\Users\vishu\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\CSVfiles\WIndiaStateCensusData.csv";
         static string wrongIndiaStateCode = @"C:\Users\vishu\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\CSVfiles\WrongIndiaStateCode.csv";
         static string indiaStateCensusData = @"C:\Users\vishu\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\CSVfiles\IndiaStateCensusData.csv";
         static string indiaStateCode = @"C:\Users\vishu\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\CSVfiles\WrongIndiaStateCode.csv";
@@ -45,6 +45,18 @@ namespace IndianStateCensusAnalyserTest
             //assert
             //total no of rows excluding header are 29 in indian state census data.
             Assert.AreEqual(29, totalRecord.Count);
+        }
+        [Test]
+        /// <summary>
+        /// checking the program for incorrect file name which do not exist
+        /// </summary>
+        public void GivenWrongIndianCensusDataFile_WhenReadedShouldReturnCustomException()
+        {
+            //census Analyser Class is Called and parameters are passed like country, indian state census data which is csv file and header file.
+            //add
+           var customException= Assert.Throws<CensusAnalyserException>(()=>censusAnalyser.LoadCensusData(CensusAnalyser.Country.INDIA,wrongIndiaStateCensusData,indianStateCensusHeaders));
+            //total no of rows excluding header are 29 in indian state census data.
+            Assert.AreEqual(CensusAnalyserException.ExceptionType.FILE_NOT_FOUND,customException.etype );
         }
        
     }
