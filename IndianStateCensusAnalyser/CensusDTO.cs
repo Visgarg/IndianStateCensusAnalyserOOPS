@@ -16,6 +16,10 @@ namespace IndianStateCensusAnalyser
         public string stateCode;
         public int tin;
 
+        /// <summary>
+        /// Constructor for CensusDTO with indianstateCensusData as a parameter
+        /// </summary>
+        /// <param name="indianStateCensusData"></param>
         public CensusDTO(IndianStateCensusData indianStateCensusData)
         {
             this.state= indianStateCensusData.state;
@@ -23,6 +27,10 @@ namespace IndianStateCensusAnalyser
             this.area = indianStateCensusData.area;
             this.density = indianStateCensusData.density;
         }
+        /// <summary>
+        /// Constructor for censusDTO with indianstateCode as a parameter
+        /// </summary>
+        /// <param name="indianStateCode"></param>
         public CensusDTO(IndianStateCode indianStateCode)
         {
             this.serialNumber = indianStateCode.serialNumber;

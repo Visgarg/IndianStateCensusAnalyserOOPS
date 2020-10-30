@@ -11,6 +11,13 @@ namespace IndianStateCensusAnalyser.Constructor_for_different_CSV
         public long area;
         public long density;
 
+        /// <summary>
+        /// Constructor for IndianStateCensusData
+        /// </summary>
+        /// <param name="state"></param>
+        /// <param name="population"></param>
+        /// <param name="area"></param>
+        /// <param name="density"></param>
         public IndianStateCensusData(string state, string population, string area, string density)
         {
             this.state = state;

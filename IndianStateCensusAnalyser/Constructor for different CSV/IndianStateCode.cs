@@ -11,6 +11,13 @@ namespace IndianStateCensusAnalyser.Constructor_for_different_CSV
         public int tin;
         public int serialNumber;
         
+        /// <summary>
+        /// Constructor for Indian State code class
+        /// </summary>
+        /// <param name="stateName"></param>
+        /// <param name="stateCode"></param>
+        /// <param name="tin"></param>
+        /// <param name="serialNumber"></param>
         public IndianStateCode(string stateName, string stateCode, string tin, string serialNumber)
         {
             this.stateName = stateName;
