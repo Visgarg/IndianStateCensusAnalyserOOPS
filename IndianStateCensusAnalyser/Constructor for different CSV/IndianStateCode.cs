@@ -18,7 +18,7 @@ namespace IndianStateCensusAnalyser.Constructor_for_different_CSV
         /// <param name="stateCode"></param>
         /// <param name="tin"></param>
         /// <param name="serialNumber"></param>
-        public IndianStateCode(string stateName, string stateCode, string tin, string serialNumber)
+        public IndianStateCode( string serialNumber,string stateName,  string tin,string stateCode)
         {
             this.stateName = stateName;
             this.stateCode = stateCode;
