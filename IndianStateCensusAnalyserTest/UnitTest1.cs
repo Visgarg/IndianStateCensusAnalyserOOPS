@@ -6,7 +6,7 @@ namespace IndianStateCensusAnalyserTest
 {
     public class Tests
     {
-        static string wrongIndiaStateCensusData = @"C:\Users\vishu\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\CSVfiles\WIndiaStateCensusData.csv";
+        static string wrongIndiaStateCensusData = @"C:\Users\vishu\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\CSVfiles\WrongIndiaStateCensusData.csv";
         static string wrongIndiaStateCode = @"C:\Users\vishu\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\CSVfiles\WrongIndiaStateCode.csv";
         static string indiaStateCensusData = @"C:\Users\vishu\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\CSVfiles\IndiaStateCensusData.csv";
         static string indiaStateCode = @"C:\Users\vishu\source\repos\IndianStateCensusAnalyser\IndianStateCensusAnalyser\CSVfiles\WrongIndiaStateCode.csv";
@@ -81,6 +81,18 @@ namespace IndianStateCensusAnalyserTest
             var customException = Assert.Throws<CensusAnalyserException>(() => censusAnalyser.LoadCensusData(CensusAnalyser.Country.INDIA,delimiterIndiaStateCensusData, indianStateCensusHeaders));
             //total no of rows excluding header are 29 in indian state census data.
             Assert.AreEqual(CensusAnalyserException.ExceptionType.INCORRECT_DELIMITER, customException.etype);
+        }
+        [Test]
+        /// <summary>
+        /// checking the program for incorrect header is passed
+        /// </summary>
+        public void GivenIncorrectHeaderForCensusData_WhenReadedShouldReturnCustomException()
+        {
+            //census Analyser Class is Called and parameters are passed like country, indian state census data which is csv file and header file.
+            //add
+            var customException = Assert.Throws<CensusAnalyserException>(() => censusAnalyser.LoadCensusData(CensusAnalyser.Country.INDIA,wrongIndiaStateCensusData, indianStateCensusHeaders));
+            //total no of rows excluding header are 29 in indian state census data.
+            Assert.AreEqual(CensusAnalyserException.ExceptionType.INCORRECT_HEADER, customException.etype);
         }
     }
 }
