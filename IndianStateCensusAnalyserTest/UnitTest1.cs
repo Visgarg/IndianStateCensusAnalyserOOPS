@@ -70,6 +70,17 @@ namespace IndianStateCensusAnalyserTest
             //total no of rows excluding header are 29 in indian state census data.
             Assert.AreEqual(CensusAnalyserException.ExceptionType.INVALID_FILE_TYPE, customException.etype);
         }
-
+        [Test]
+        /// <summary>
+        /// checking the program for incorrect delimiter is passed
+        /// </summary>
+        public void GivenIncorrectDelimiterForCensusData_WhenReadedShouldReturnCustomException()
+        {
+            //census Analyser Class is Called and parameters are passed like country, indian state census data which is csv file and header file.
+            //add
+            var customException = Assert.Throws<CensusAnalyserException>(() => censusAnalyser.LoadCensusData(CensusAnalyser.Country.INDIA,delimiterIndiaStateCensusData, indianStateCensusHeaders));
+            //total no of rows excluding header are 29 in indian state census data.
+            Assert.AreEqual(CensusAnalyserException.ExceptionType.INCORRECT_DELIMITER, customException.etype);
+        }
     }
 }
